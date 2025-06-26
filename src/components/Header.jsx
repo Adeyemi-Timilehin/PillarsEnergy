@@ -13,7 +13,8 @@ const [installPrompt, setInstallPrompt] = useState(null);
   window.matchMedia('(display-mode: standalone)').matches ||
   window.matchMedia('(display-mode: minimal-ui)').matches ||
   'BeforeInstallPromptEvent' in window;
-uuseEffect(() => {
+
+  useEffect(() => {
   const handleInstallPrompt = (e) => {
     e.preventDefault();
     setInstallPrompt(e);

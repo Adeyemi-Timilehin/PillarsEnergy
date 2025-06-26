@@ -1,12 +1,36 @@
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Button } from '../components/ui/button'
-import { Menu, X, Zap } from 'lucide-react'
+import { Menu, X, Zap, Download } from 'lucide-react';
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+const [installPrompt, setInstallPrompt] = useState(null);
   const location = useLocation()
+
+  const isPWACompatible = () =>
+  window.matchMedia('(display-mode: standalone)').matches ||
+  window.matchMedia('(display-mode: minimal-ui)').matches ||
+  'BeforeInstallPromptEvent' in window;
+uuseEffect(() => {
+  const handleInstallPrompt = (e) => {
+    e.preventDefault();
+    setInstallPrompt(e);
+  };
+
+  const handleAppInstalled = () => {
+    setInstallPrompt(null);
+  };
+
+  window.addEventListener('beforeinstallprompt', handleInstallPrompt);
+  window.addEventListener('appinstalled', handleAppInstalled);
+
+  return () => {
+    window.removeEventListener('beforeinstallprompt', handleInstallPrompt);
+    window.removeEventListener('appinstalled', handleAppInstalled);
+  };
+}, []);
 
   const navigation = [
     { name: 'Home', href: '/' },
@@ -55,9 +79,24 @@ export function Header() {
 
           {/* CTA Button */}
           <div className="hidden md:flex">
-            <Button asChild className="bg-green-600 hover:bg-green-700">
-              <Link to="/contact">Get Quote</Link>
-            </Button>
+       {installPrompt && isPWACompatible() && (
+  <Button
+    onClick={() => {
+      installPrompt.prompt();
+      installPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User installed the PWA');
+        }
+        setInstallPrompt(null);
+      });
+    }}
+    className="bg-blue-600 hover:bg-blue-700 text-white"
+  >
+    <Download className="h-5 w-5 mr-2" />
+    Install App
+  </Button>
+)}
+          
           </div>
 
           {/* Mobile menu button */}
@@ -91,10 +130,23 @@ export function Header() {
                 </Link>
               ))}
               <div className="px-3 py-2">
-                <Button asChild className="w-full bg-green-600 hover:bg-green-700">
-                  <Link to="/contact">Get Quote</Link>
-                </Button>
-              </div>
+           {installPrompt && isPWACompatible() && (
+  <Button
+    onClick={() => {
+      installPrompt.prompt();
+      installPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User installed the PWA');
+        }
+        setInstallPrompt(null);
+      });
+    }}
+    className="bg-blue-600 hover:bg-blue-700 text-white"
+  >
+    <Download className="h-5 w-5 mr-2" />
+    Install App
+  </Button>
+)}              </div>
             </div>
           </div>
         )}

@@ -26,8 +26,8 @@ import {
   TrendingUp, 
   DollarSign, 
   Leaf,
-  ShoppingCart,
-  Sell,
+
+
   Activity,
   MapPin,
   Clock,
@@ -35,7 +35,8 @@ import {
   Filter,
   Search
 } from 'lucide-react'
-
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import StorefrontIcon from '@mui/icons-material/Storefront';
 export function Market() {
   const [userType, setUserType] = useState('buyer')
   const [searchTerm, setSearchTerm] = useState('')
@@ -167,7 +168,7 @@ export function Market() {
                 className={userType === 'buyer' ? 'bg-blue-600 hover:bg-blue-700' : 'bg-gray-600 hover:bg-gray-700'}
                 onClick={() => setUserType('buyer')}
               >
-                <ShoppingCart className="mr-2 h-5 w-5" />
+                <ShoppingCartIcon className="mr-2 h-5 w-5" />
                 I Want to Buy Energy
               </Button>
               <Button 
@@ -175,7 +176,7 @@ export function Market() {
                 className={userType === 'seller' ? 'bg-green-600 hover:bg-green-700' : 'bg-gray-600 hover:bg-gray-700'}
                 onClick={() => setUserType('seller')}
               >
-                <Sell className="mr-2 h-5 w-5" />
+                <StorefrontIcon className="mr-2 h-5 w-5" />
                 I Want to Sell Energy
               </Button>
             </div>
@@ -398,7 +399,7 @@ export function Market() {
                           <div className="flex items-center space-x-3">
                             <div className={`p-2 rounded-full ${activity.type === 'purchase' ? 'bg-blue-100' : 'bg-green-100'}`}>
                               {activity.type === 'purchase' ? 
-                                <ShoppingCart className="h-4 w-4 text-blue-600" /> : 
+                                <ShoppingCartIcon className="h-4 w-4 text-blue-600" /> : 
                                 <Sell className="h-4 w-4 text-green-600" />
                               }
                             </div>

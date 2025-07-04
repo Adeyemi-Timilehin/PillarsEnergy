@@ -14,7 +14,7 @@ export function Header() {
     { name: 'Projects', href: '/projects' },
     { name: 'Solutions', href: '/solutions' },
     { name: 'Calculator', href: '/calculator' },
-    { name: 'Market', href: '/market' },
+    // { name: 'Market', href: '/market' },
     { name: 'Contact', href: '/contact' },
   ]
 
@@ -53,11 +53,11 @@ export function Header() {
           </nav>
 
           {/* CTA Button */}
-          <div className="hidden md:flex">
+          {/* <div className="hidden md:flex">
             <Button asChild className="bg-green-600 hover:bg-green-700">
               <Link to="/contact">Get Quote</Link>
             </Button>
-          </div>
+          </div> */}
 
           {/* Mobile menu button */}
           <div className="md:hidden">
@@ -89,11 +89,11 @@ export function Header() {
                   {item.name}
                 </Link>
               ))}
-              <div className="px-3 py-2">
+              {/* <div className="px-3 py-2">
                 <Button asChild className="w-full bg-green-600 hover:bg-green-700">
                   <Link to="/contact">Get Quote</Link>
                 </Button>
-              </div>
+              </div> */}
             </div>
           </div>
         )}

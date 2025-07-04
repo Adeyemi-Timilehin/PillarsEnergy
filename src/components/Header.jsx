@@ -1,37 +1,11 @@
-
-import React, { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Button } from '../components/ui/button'
-import { Menu, X, Zap, Download } from 'lucide-react';
+import { Menu, X, Zap } from 'lucide-react'
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-const [installPrompt, setInstallPrompt] = useState(null);
   const location = useLocation()
-
-  const isPWACompatible = () =>
-  window.matchMedia('(display-mode: standalone)').matches ||
-  window.matchMedia('(display-mode: minimal-ui)').matches ||
-  'BeforeInstallPromptEvent' in window;
-
-  useEffect(() => {
-  const handleInstallPrompt = (e) => {
-    e.preventDefault();
-    setInstallPrompt(e);
-  };
-
-  const handleAppInstalled = () => {
-    setInstallPrompt(null);
-  };
-
-  window.addEventListener('beforeinstallprompt', handleInstallPrompt);
-  window.addEventListener('appinstalled', handleAppInstalled);
-
-  return () => {
-    window.removeEventListener('beforeinstallprompt', handleInstallPrompt);
-    window.removeEventListener('appinstalled', handleAppInstalled);
-  };
-}, []);
 
   const navigation = [
     { name: 'Home', href: '/' },
@@ -40,14 +14,14 @@ const [installPrompt, setInstallPrompt] = useState(null);
     { name: 'Projects', href: '/projects' },
     { name: 'Solutions', href: '/solutions' },
     { name: 'Calculator', href: '/calculator' },
-    // { name: 'Market', href: '/market' },
+    { name: 'Market', href: '/market' },
     { name: 'Contact', href: '/contact' },
   ]
 
   const isActive = (path) => location.pathname === path
 
   return (
-    <header className="bg-white shadow-sm border-b sticky top-0 z-50 ">
+    <header className="bg-white shadow-sm border-b sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -80,24 +54,9 @@ const [installPrompt, setInstallPrompt] = useState(null);
 
           {/* CTA Button */}
           <div className="hidden md:flex">
-       {installPrompt && isPWACompatible() && (
-  <Button
-    onClick={() => {
-      installPrompt.prompt();
-      installPrompt.userChoice.then((choiceResult) => {
-        if (choiceResult.outcome === 'accepted') {
-          console.log('User installed the PWA');
-        }
-        setInstallPrompt(null);
-      });
-    }}
-    className="bg-blue-600 hover:bg-blue-700 text-white"
-  >
-    <Download className="h-5 w-5 mr-2" />
-    Install App
-  </Button>
-)}
-          
+            <Button asChild className="bg-green-600 hover:bg-green-700">
+              <Link to="/contact">Get Quote</Link>
+            </Button>
           </div>
 
           {/* Mobile menu button */}
@@ -131,23 +90,10 @@ const [installPrompt, setInstallPrompt] = useState(null);
                 </Link>
               ))}
               <div className="px-3 py-2">
-           {installPrompt && isPWACompatible() && (
-  <Button
-    onClick={() => {
-      installPrompt.prompt();
-      installPrompt.userChoice.then((choiceResult) => {
-        if (choiceResult.outcome === 'accepted') {
-          console.log('User installed the PWA');
-        }
-        setInstallPrompt(null);
-      });
-    }}
-    className="bg-blue-600 hover:bg-blue-700 text-white"
-  >
-    <Download className="h-5 w-5 mr-2" />
-    Install App
-  </Button>
-)}              </div>
+                <Button asChild className="w-full bg-green-600 hover:bg-green-700">
+                  <Link to="/contact">Get Quote</Link>
+                </Button>
+              </div>
             </div>
           </div>
         )}

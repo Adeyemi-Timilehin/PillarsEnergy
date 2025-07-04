@@ -1,11 +1,7 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 import { Zap, Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react'
-import { getYear } from 'date-fns'
 
 export function Footer() {
- const year = getYear(new Date());
-
   return (
     <footer className="bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -45,7 +41,7 @@ export function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
-              <li><Link to="/about" className="text-gray-400 hover:text-white transition-colors" >About Us</Link></li>
+              <li><Link to="/about" className="text-gray-400 hover:text-white transition-colors">About Us</Link></li>
               <li><Link to="/consultancy" className="text-gray-400 hover:text-white transition-colors">Consultancy</Link></li>
               <li><Link to="/projects" className="text-gray-400 hover:text-white transition-colors">Projects</Link></li>
               <li><Link to="/solutions" className="text-gray-400 hover:text-white transition-colors">Solutions</Link></li>
@@ -75,7 +71,7 @@ export function Footer() {
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center">
           <p className="text-gray-400">
-            © {year} PillarsEnergy Solutions. All rights reserved. | 
+            © 2024 PillarsEnergy Solutions. All rights reserved. | 
             <Link to="/privacy" className="hover:text-white ml-1">Privacy Policy</Link> | 
             <Link to="/terms" className="hover:text-white ml-1">Terms of Service</Link>
           </p>

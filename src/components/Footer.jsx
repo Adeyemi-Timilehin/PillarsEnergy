@@ -13,7 +13,7 @@ export function Footer() {
                 <Zap className="h-6 w-6 text-white" />
               </div>
               <div>
-                <span className="text-xl font-bold">PillarsEnergy</span>
+                <span className="text-xl font-bold">PillarsNergy</span>
                 <span className="text-sm text-gray-400 block">Solutions</span>
               </div>
             </div>

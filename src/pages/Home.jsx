@@ -324,7 +324,7 @@ export function Home() {
                   Get Free Consultation
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-green-600">
+              <Button asChild size="lg" variant="outline-primary" className="border-white bg-gray-900 hover:bg-white hover:text-green-600">
                 <Link to="/calculator" className="flex items-center">
                   <TrendingUp className="mr-2 h-5 w-5" />
                   Calculate Your Savings

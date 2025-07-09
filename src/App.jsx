@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { Header } from './components/Header'
 import { Footer } from './components/Footer'
+import { InstallPrompt } from './components/InstallPrompt'
 import { Home } from './pages/Home'
 import { About } from './pages/About'
 import { Consultancy } from './pages/Consultancy'
@@ -29,6 +30,7 @@ function App() {
           </Routes>
         </main>
         <Footer />
+         <InstallPrompt />
       </div>
     </Router>
   )

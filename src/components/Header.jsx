@@ -30,7 +30,7 @@ export function Header() {
               <Zap className="h-6 w-6 text-white" />
             </div>
             <div>
-              <span className="text-xl font-bold text-gray-900">PillarsEnergy</span>
+              <span className="text-xl font-bold text-gray-900">PillarsNergy</span>
               <span className="text-sm text-gray-600 block">Solutions</span>
             </div>
           </Link>
